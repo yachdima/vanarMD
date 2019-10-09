@@ -13,6 +13,8 @@ public class AnonimousClassApp {
 		// Predicate lambda
 		Predicate<? super Student> f = mark ->mark.getMark() >= 8f;
 		
+		Comparator<Student> st = (s1,s2) -> s1.getMark() < s2.getMark() ? 1 : s1.getMark() == s2.getMark() ? 0 : -1;
+		
 		ArrayList<Student> students = new ArrayList<Student>();
 		students.add(new Student("Vasea",5f));
 		students.add(new Student("Petea",8f));
