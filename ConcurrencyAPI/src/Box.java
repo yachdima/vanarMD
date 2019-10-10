@@ -15,26 +15,18 @@ public class Box {
 
 class Incrementer extends Thread{
     public void increment(){
-    	//Box.value = Box.rand.nextInt(100);
+    	
     	while(true) {
     		while (Box.value < 3) { 
     	         Box.value++;
-    	         System.out.println("+ " + Box.value);
     	         try {
-    	 			Thread.sleep(3000);
-    	 		} catch (InterruptedException e) {
-    	 			e.printStackTrace();
-    	 		}
+    		 			Thread.sleep(2000);
+    		 		} catch (InterruptedException e) {
+    		 			e.printStackTrace();
+    		 		}
     		}
     		
-    		if(Box.value == 3) {
-    			Box.value = 0;
-    			try {
-    	 			Thread.sleep(1000);
-    	 		} catch (InterruptedException e) {
-    	 			e.printStackTrace();
-    	 		}
-    		}
+    		
     	} 
     }
     
@@ -50,22 +42,15 @@ class Decrementer extends Thread{
     	while(true) {
     		while (Box.value > -3) {
     			Box.value--;
-        		System.out.println("- " + Box.value);
-	        	try {
-	      			Thread.sleep(1000);
-	      		} catch (InterruptedException e) {
-	      			e.printStackTrace();
-	      		}
+        		try {
+          			Thread.sleep(3000);
+          		} catch (InterruptedException e) {
+          			e.printStackTrace();
+          		}
     		}
+    		Box.value = 3;	
     		
-    		if(Box.value == -3) {
-    			Box.value = 0;
-    			try {
-    	 			Thread.sleep(3000);
-    	 		} catch (InterruptedException e) {
-    	 			e.printStackTrace();
-    	 		}
-    		}
+    		
         }
     }
     
