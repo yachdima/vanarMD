@@ -17,7 +17,6 @@ public class TestApp {
 		String json_string;
 		JSONObject json;
 		
-		
 		CoinRateProvider coinRatePr = new CoinRateProvider();
 		
 		Scanner inp = new Scanner(System.in);
