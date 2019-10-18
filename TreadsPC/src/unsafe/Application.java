@@ -6,10 +6,12 @@ public class Application {
 		BreadProvider provider = new BreadProvider();
 		BreadConsumer consumerA = new BreadConsumer("John",provider);
 		BreadConsumer consumerB = new BreadConsumer("Marry",provider);
+		BreadConsumer consumerC = new BreadConsumer("Peter",provider);
 		
 		provider.start();
 		consumerA.start();
 		consumerB.start();
+		consumerC.start();
 	}
 
 }

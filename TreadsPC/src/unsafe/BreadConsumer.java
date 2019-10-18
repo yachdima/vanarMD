@@ -22,7 +22,7 @@ public class BreadConsumer extends Thread{
 		}
 	}
 	
-	public synchronized void buyOneBread() {
+	public /*synchronized*/ void buyOneBread() {
 		//synchronized (provider) {
 			Bread fresh_bread = provider.sellOneBread(); 
 		//}
