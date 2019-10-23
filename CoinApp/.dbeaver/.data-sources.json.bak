@@ -1,0 +1,28 @@
+{
+	"folders": {},
+	"connections": {
+		"sqlite_jdbc-16df3866364-4b534ad55a53092b": {
+			"provider": "generic",
+			"driver": "sqlite_jdbc",
+			"name": "SQLite - university.db",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"database": "C:\\Users\\yachmenev\\eclipse-workspace\\SimpleJDBCStudentDatabase\\university.db",
+				"url": "jdbc:sqlite:C:\\Users\\yachmenev\\eclipse-workspace\\SimpleJDBCStudentDatabase\\university.db",
+				"type": "dev",
+				"handlers": {}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Разработка",
+			"color": "255,255,255",
+			"description": "База данных для разработки",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false
+		}
+	}
+}
