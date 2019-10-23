@@ -22,6 +22,13 @@ public class Student {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Student(String fullname, Date dob, Float mark) {
+		super();
+		this.fullname = fullname;
+		this.dob = dob;
+		this.mark = mark;
+	}
+
 	public String getFullname() {
 		return fullname;
 	}
