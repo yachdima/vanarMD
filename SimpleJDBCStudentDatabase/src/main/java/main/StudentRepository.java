@@ -11,27 +11,23 @@ import java.util.ArrayList;
 
 import data.Student;
 
-public class StudentRepository {
-	private Connection connection;
-	private String database_url = "jdbc:sqlite:university.db";
-	Statement statement;
-	SimpleDateFormat format = new SimpleDateFormat("dd-mm-yyyy");
-	
-	public StudentRepository() {
-		try {
-			connection = DriverManager.getConnection(database_url);
-			statement = connection.createStatement();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-	
-	protected void finalize() throws SQLException {
-		connection.close();
-	}
-	
+public class StudentRepository extends Repository {
+//	private Connection connection;
+//	private String database_url = "jdbc:sqlite:university.db";
+//	Statement statement;
+//	SimpleDateFormat format = new SimpleDateFormat("dd-mm-yyyy");
+//	
+//	public StudentRepository() {
+//		try {
+//			connection = DriverManager.getConnection(database_url);
+//			statement = connection.createStatement();
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//	}
+
 	public boolean install() {
 		
 		try {
