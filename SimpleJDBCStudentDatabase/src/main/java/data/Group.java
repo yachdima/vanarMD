@@ -13,6 +13,13 @@ public class Group {
 	public Group() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Group(String name, String code) {
+		super();
+		this.name = name;
+		this.code = code;
+	}
+	
 	public Integer getId() {
 		return id;
 	}
