@@ -10,6 +10,9 @@ public class Group {
 		this.name = name;
 		this.code = code;
 	}
+	public Group() {
+		// TODO Auto-generated constructor stub
+	}
 	public Integer getId() {
 		return id;
 	}
