@@ -1,15 +1,15 @@
 {
 	"folders": {},
 	"connections": {
-		"sqlite_jdbc-16df3866364-4b534ad55a53092b": {
+		"sqlite_jdbc-16df9ebc1c4-1ae7c0058e927b4e": {
 			"provider": "generic",
 			"driver": "sqlite_jdbc",
 			"name": "SQLite - university.db",
 			"save-password": true,
 			"read-only": false,
 			"configuration": {
-				"database": "C:\\Users\\yachmenev\\eclipse-workspace\\SimpleJDBCStudentDatabase\\university.db",
-				"url": "jdbc:sqlite:C:\\Users\\yachmenev\\eclipse-workspace\\SimpleJDBCStudentDatabase\\university.db",
+				"database": "C:\\Users\\yachmenev\\git\\vanarMD\\SimpleJDBCStudentDatabase\\university.db",
+				"url": "jdbc:sqlite:C:\\Users\\yachmenev\\git\\vanarMD\\SimpleJDBCStudentDatabase\\university.db",
 				"type": "dev",
 				"handlers": {}
 			}

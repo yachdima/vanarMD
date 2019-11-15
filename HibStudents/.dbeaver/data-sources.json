@@ -1,24 +1,23 @@
 {
 	"folders": {},
 	"connections": {
-		"postgres-jdbc-16e6fb61648-2caeeb84704926c8": {
+		"postgres-jdbc-16e6fae1081-318563c93a23f52b": {
 			"provider": "postgresql",
 			"driver": "postgres-jdbc",
-			"name": "PostgreSQL - postgres",
+			"name": "PostgreSQL - university_app",
 			"save-password": true,
 			"read-only": false,
 			"configuration": {
 				"host": "localhost",
 				"port": "5432",
-				"database": "postgres",
-				"url": "jdbc:postgresql://localhost:5432/postgres",
+				"database": "university_app",
+				"url": "jdbc:postgresql://localhost:5432/university_app",
 				"home": "postgresql-x64-12",
 				"type": "dev",
 				"provider-properties": {
-					"@dbeaver-show-non-default-db@": "true",
+					"@dbeaver-show-non-default-db@": "false",
 					"@dbeaver-show-template-db@": "false"
-				},
-				"handlers": {}
+				}
 			}
 		}
 	},
