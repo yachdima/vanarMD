@@ -1,16 +1,23 @@
 {
 	"folders": {},
 	"connections": {
-		"sqlite_jdbc-16df9ebc1c4-1ae7c0058e927b4e": {
-			"provider": "generic",
-			"driver": "sqlite_jdbc",
-			"name": "SQLite - university.db",
+		"postgres-jdbc-16e6fb61648-2caeeb84704926c8": {
+			"provider": "postgresql",
+			"driver": "postgres-jdbc",
+			"name": "PostgreSQL - postgres",
 			"save-password": true,
 			"read-only": false,
 			"configuration": {
-				"database": "C:\\Users\\yachmenev\\git\\vanarMD\\SimpleJDBCStudentDatabase\\university.db",
-				"url": "jdbc:sqlite:C:\\Users\\yachmenev\\git\\vanarMD\\SimpleJDBCStudentDatabase\\university.db",
+				"host": "localhost",
+				"port": "5432",
+				"database": "postgres",
+				"url": "jdbc:postgresql://localhost:5432/postgres",
+				"home": "postgresql-x64-12",
 				"type": "dev",
+				"provider-properties": {
+					"@dbeaver-show-non-default-db@": "true",
+					"@dbeaver-show-template-db@": "false"
+				},
 				"handlers": {}
 			}
 		}

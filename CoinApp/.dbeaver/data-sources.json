@@ -17,7 +17,19 @@
 				"provider-properties": {
 					"@dbeaver-show-non-default-db@": "true",
 					"@dbeaver-show-template-db@": "false"
-				},
+				}
+			}
+		},
+		"sqlite_jdbc-16e9a19419c-7fb4210350fea7bc": {
+			"provider": "generic",
+			"driver": "sqlite_jdbc",
+			"name": "SQLite - university.db",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"database": "C:\\Users\\sony\\eclipseworkspace\\JPA.EclipseLink\\university.db",
+				"url": "jdbc:sqlite:C:\\Users\\sony\\eclipseworkspace\\JPA.EclipseLink\\university.db",
+				"type": "dev",
 				"handlers": {}
 			}
 		}
