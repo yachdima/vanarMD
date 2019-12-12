@@ -1,6 +1,10 @@
 package main;
 
-   import javax.persistence.EntityManager;
+
+
+import java.sql.Date;
+
+import javax.persistence.EntityManager;
    import javax.persistence.EntityManagerFactory;
    import javax.persistence.Persistence;
 
@@ -8,30 +12,80 @@ package main;
 
    public class Application {
        public static void main(String[] args) {
-           check();
-          // install();
-           addOneStudent(new Student(567L, "fullname3"));
-           Student s = findOneStudent(123L);
-           System.out.println(s.toString());
+          // check();
+    	 //  uninstall();
+         //  install();
+    	   testStudent();
+//           addOneStudent(new Student(567L, "fullname3"));
+//           Student s = findOneStudent(123L);
+//           System.out.println(s.toString());
+       }
+       
+       public static void testStudent(){
+    	  // Student s = new Student("First student",new Date(80,11,1), 9.5f); // transient
+    	   Student s;
+    	   
+    	   EntityManagerFactory factory = Persistence.createEntityManagerFactory("hb-database"); // session start
+           EntityManager em = factory.createEntityManager();
+           
+           em.getTransaction().begin();
+   		
+           // C
+          // em.persist(s); // save -> //  persistent
+           
+           // R
+           s = em.find(Student.class,1L);
+           System.out.println(s);
+           
+           // U + transient / dirty
+          // s.setDob(new Date(80,10,1));
+          // em.persist(s);
+           
+           // D
+          em.remove(s);
+           
+           em.getTransaction().commit();
+           em.close(); // sesion end
+    	   
+    	   
+    	   
        }
        
        public static void check() {
-           EntityManagerFactory factory = Persistence.createEntityManagerFactory("sqlite-database");
+    	   EntityManagerFactory factory = Persistence.createEntityManagerFactory("hb-database");
            EntityManager em = factory.createEntityManager();
+           
+           em.getTransaction().begin();
+   		
+           em.getTransaction().commit();
+           em.close();
        }
        
        public static void install() {
-           EntityManagerFactory factory = Persistence.createEntityManagerFactory("sqlite-database");
+           EntityManagerFactory factory = Persistence.createEntityManagerFactory("hb-database");
            EntityManager em = factory.createEntityManager();
            
            em.getTransaction().begin();
 
            em
-             .createNativeQuery("Create table Student(id INTEGER PRIMARY KEY, fullName VARCHAR(30));")
+             .createNativeQuery("CREATE TABLE public.students ( 	id serial NOT NULL, 	fullname varchar(30) NULL, 	dob date NULL, 	mark numeric NULL, 	CONSTRAINT students_pkey PRIMARY KEY (id) );")
              .executeUpdate();
 
            em.getTransaction().commit();
            
+       }
+       
+       public static void uninstall() {
+    	   EntityManagerFactory factory = Persistence.createEntityManagerFactory("hb-database");
+           EntityManager em = factory.createEntityManager();
+           
+           em.getTransaction().begin();
+
+           em
+             .createNativeQuery("DROP TABLE public.students;")
+             .executeUpdate();
+
+           em.getTransaction().commit();
        }
        
        public static void addOneStudent(Student s) {
