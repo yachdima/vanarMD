@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Entity
 public class Faculty {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "id")
 	private Long id;
 	
@@ -20,11 +21,9 @@ public class Faculty {
 		super();
 	}
 
-	public Faculty(Long id, String name, List<Groups> groups) {
+	public Faculty(String name) {
 		super();
-		this.id = id;
 		this.name = name;
-		this.groups = groups;
 	}
 
 	public Long getId() {

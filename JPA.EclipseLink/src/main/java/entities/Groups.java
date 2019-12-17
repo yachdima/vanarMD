@@ -10,6 +10,7 @@ import com.sun.istack.NotNull;
 
 public class Groups {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO) 	
 	@Column(name = "id")
 	private Long id;
 	
@@ -28,12 +29,9 @@ public class Groups {
 		super();
 	}
 
-	public Groups(Long id, String name, Faculty faculty, List<Student> students) {
+	public Groups(String name) {
 		super();
-		this.id = id;
 		this.name = name;
-		this.faculty = faculty;
-		this.students = students;
 	}
 
 	public Long getId() {

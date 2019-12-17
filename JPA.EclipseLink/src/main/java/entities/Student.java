@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -37,6 +38,8 @@ public class Student {
 	@JoinColumn(name = "groups_id", nullable = true)
     Groups groups;
     
+	@Embedded
+	private Performance performance;
     
     public Student() {
 		super();
@@ -44,12 +47,13 @@ public class Student {
     
 
 
-	public Student(/*Long id,*/ String fullName, Date dob, Float mark) {
+	public Student(/*Long id,*/ String fullName, Date dob, Float mark, Performance per) {
 		super();
 		//this.id = id;
 		this.fullName = fullName;
 		this.dob = dob;
 		this.mark = mark;
+		this.performance = per;
 	}
 
 

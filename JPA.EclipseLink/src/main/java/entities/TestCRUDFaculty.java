@@ -1,15 +1,13 @@
 package entities;
 
-import java.sql.Date;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.junit.jupiter.api.Test;
 
-public class TestCRUDStudent {
-	private static Long id_st;
+public class TestCRUDFaculty {
+private static Long id_f;
 	
 	@Test
     public void test1() {
@@ -18,31 +16,28 @@ public class TestCRUDStudent {
         
         em.getTransaction().begin();
         
-        Performance per = new Performance(5.5f,40,50,Performance.Behaviour.AVERAGE);
-        Student s = new Student("Test student",new Date(85,3,5), 5.5f,per); // transient
+        Faculty s = new Faculty("Test Faculty"); // transient
         em.persist(s);
         
-        s = em.find(Student.class,s.getId());
-        id_st = s.getId();
-        System.out.println(id_st);
+        s = em.find(Faculty.class,s.getId());
+        id_f = s.getId();
+        System.out.println(id_f);
         
         em.getTransaction().commit();
         em.close(); // sesion end
-        System.out.println("1 "+id_st);
+        System.out.println("1 "+id_f);
     }
 	
 	
 	@Test
     public void test2() {
-		 System.out.println("2 "+id_st);
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("hb-database"); // session start
         EntityManager em = factory.createEntityManager();
         
         em.getTransaction().begin();
         
-        System.out.println("3 "+id_st);
-        Student s = em.find(Student.class,id_st);
-        s.setMark(10f);
+        Faculty s = em.find(Faculty.class,id_f);
+        s.setName("Test2 Faculty");
         em.persist(s);
         
         em.getTransaction().commit();
@@ -56,12 +51,11 @@ public class TestCRUDStudent {
         
         em.getTransaction().begin();
         
-        System.out.println("----"+id_st);
-        Student s = em.find(Student.class,id_st);
+        Faculty s = em.find(Faculty.class,id_f);
         em.remove(s);
         
         em.getTransaction().commit();
         em.close(); // sesion end
-        System.out.println("2 "+id_st);
     }
+
 }

@@ -8,7 +8,8 @@ import javax.persistence.EntityManager;
    import javax.persistence.EntityManagerFactory;
    import javax.persistence.Persistence;
 
-   import entities.Student;
+import entities.Performance;
+import entities.Student;
 
    public class Application {
        public static void main(String[] args) {
@@ -22,8 +23,9 @@ import javax.persistence.EntityManager;
        }
        
        public static void testStudent(){
-    	  // Student s = new Student("First student",new Date(80,11,1), 9.5f); // transient
-    	   Student s;
+    	   Performance per = new Performance(5.5f,40,50,Performance.Behaviour.GOOD);
+    	   Student s = new Student("First student",new Date(80,11,1), 9.5f,per); // transient
+    	  // Student s;
     	   
     	   EntityManagerFactory factory = Persistence.createEntityManagerFactory("hb-database"); // session start
            EntityManager em = factory.createEntityManager();
@@ -31,7 +33,7 @@ import javax.persistence.EntityManager;
            em.getTransaction().begin();
    		
            // C
-          // em.persist(s); // save -> //  persistent
+           em.persist(s); // save -> //  persistent
            
            // R
            s = em.find(Student.class,1L);
@@ -42,7 +44,7 @@ import javax.persistence.EntityManager;
           // em.persist(s);
            
            // D
-          em.remove(s);
+       //   em.remove(s);
            
            em.getTransaction().commit();
            em.close(); // sesion end
