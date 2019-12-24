@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 
 import entities.MasterStudent;
 import entities.Performance;
+import entities.PhDStudent;
 import entities.Student;
 
    public class Application {
@@ -27,6 +28,7 @@ import entities.Student;
     	   Performance per = new Performance(5.5f,40,50,Performance.Behaviour.GOOD);
     	   Student s = new Student("First student",new Date(80,11,1), 9.5f,per); // transient
     	   MasterStudent s1 = new MasterStudent("MMMMFirst student",new Date(80,11,1), 9.5f,per,MasterStudent.DegreeLevel.NOOB); // transient
+    	   PhDStudent s2 = new PhDStudent("PPPPhDD student",new Date(80,11,1), 7.3f,per,MasterStudent.DegreeLevel.ADVANCED,"Inst01");
     	  // Student s;
     	   
     	   EntityManagerFactory factory = Persistence.createEntityManagerFactory("hb-database"); // session start
@@ -35,7 +37,7 @@ import entities.Student;
            em.getTransaction().begin();
    		
            // C
-           em.persist(s1); // save -> //  persistent
+           em.persist(s2); // save -> //  persistent
            
            // R
         //   s = em.find(Student.class,1L);

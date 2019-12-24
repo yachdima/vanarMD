@@ -18,9 +18,8 @@ import javax.persistence.ManyToOne;
 import com.sun.istack.NotNull;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-
-public class Student {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class JMHJoinStudent {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO) 	@Column(name = "id")
 	private Long id;
@@ -44,14 +43,11 @@ public class Student {
 	@Embedded
 	private Performance performance;
     
-    public Student() {
+    public JMHJoinStudent() {
 		super();
 	}
     
-    
-
-
-	public Student(/*Long id,*/ String fullName, Date dob, Float mark, Performance per) {
+    public JMHJoinStudent(/*Long id,*/ String fullName, Date dob, Float mark, Performance per) {
 		super();
 		//this.id = id;
 		this.fullName = fullName;
@@ -104,33 +100,19 @@ public class Student {
 
 
 
-	@Override
-	public String toString() {
-		return "Student [id=" + id + ", fullName=" + fullName + ", dob=" + dob + ", mark=" + mark + ", groups=" + groups
-				+ "]";
-	}
-
-
-
-
 	public Performance getPerformance() {
 		return performance;
 	}
-
-
-
 
 	public void setPerformance(Performance performance) {
 		this.performance = performance;
 	}
 
+	@Override
+	public String toString() {
+		return "JoinStudent [id=" + id + ", fullName=" + fullName + ", dob=" + dob + ", mark=" + mark + ", groups=" + groups
+				+ "]";
+	}
 
 
-	
-
-	
-   // @GeneratedValue(strategy=GenerationType.AUTO)
-    
-    
-    
 }
