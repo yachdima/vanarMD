@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,13 +15,14 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import com.sun.istack.NotNull;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-
-public class Student {
+@Table(name = "student")
+public class Student implements Property {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO) 	@Column(name = "id")
 	private Long id;
@@ -43,7 +45,7 @@ public class Student {
     
 	@Embedded
 	private Performance performance;
-    
+	
     public Student() {
 		super();
 	}
@@ -60,8 +62,7 @@ public class Student {
 		this.performance = per;
 	}
 
-
-
+	
 	public Date getDob() {
 		return dob;
 	}
@@ -122,6 +123,24 @@ public class Student {
 
 	public void setPerformance(Performance performance) {
 		this.performance = performance;
+	}
+
+
+
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+	@Override
+	public Long getValue() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

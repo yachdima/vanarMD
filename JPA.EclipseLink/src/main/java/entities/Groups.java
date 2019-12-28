@@ -7,8 +7,8 @@ import javax.persistence.*;
 import com.sun.istack.NotNull;
 
 @Entity
-
-public class Groups {
+@Table(name = "groups")
+public class Groups implements Property {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO) 	
 	@Column(name = "id")
@@ -69,6 +69,12 @@ public class Groups {
 	@Override
 	public String toString() {
 		return "Groups [id=" + id + ", name=" + name + ", faculty=" + faculty + ", students=" + students + "]";
+	}
+
+	@Override
+	public Long getValue() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

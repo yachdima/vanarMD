@@ -8,6 +8,8 @@ import javax.persistence.EntityManager;
    import javax.persistence.EntityManagerFactory;
    import javax.persistence.Persistence;
 
+import entities.Award;
+import entities.Groups;
 import entities.MasterStudent;
 import entities.Performance;
 import entities.PhDStudent;
@@ -27,9 +29,13 @@ import entities.Student;
        public static void testStudent(){
     	   Performance per = new Performance(5.5f,40,50,Performance.Behaviour.GOOD);
     	   Student s = new Student("First student",new Date(80,11,1), 9.5f,per); // transient
-    	   MasterStudent s1 = new MasterStudent("MMMMFirst student",new Date(80,11,1), 9.5f,per,MasterStudent.DegreeLevel.NOOB); // transient
-    	   PhDStudent s2 = new PhDStudent("PPPPhDD student",new Date(80,11,1), 7.3f,per,MasterStudent.DegreeLevel.ADVANCED,"Inst01");
+    	   Groups g = new Groups("Gr1");
+    	   
+    	 //  MasterStudent s1 = new MasterStudent("MMMMFirst student",new Date(80,11,1), 9.5f,per,MasterStudent.DegreeLevel.NOOB); // transient
+    	  // PhDStudent s2 = new PhDStudent("PPPPhDD student",new Date(80,11,1), 7.3f,per,MasterStudent.DegreeLevel.ADVANCED,"Inst01");
     	  // Student s;
+    	   Award awd = new Award(s,"title1",new Date(99,11,1),Award.Type.DIMPLOMA);
+    	   Award awd2 = new Award(g,"title2",new Date(99,11,1),Award.Type.MEDAL);
     	   
     	   EntityManagerFactory factory = Persistence.createEntityManagerFactory("hb-database"); // session start
            EntityManager em = factory.createEntityManager();
@@ -37,7 +43,11 @@ import entities.Student;
            em.getTransaction().begin();
    		
            // C
-           em.persist(s2); // save -> //  persistent
+           em.persist(s);
+           em.persist(awd); // save -> //  persistent
+           
+           em.persist(g);
+           em.persist(awd2);
            
            // R
         //   s = em.find(Student.class,1L);

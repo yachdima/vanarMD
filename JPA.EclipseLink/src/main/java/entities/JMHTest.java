@@ -106,24 +106,5 @@ public class JMHTest {
 
 	}
 	
-	@Benchmark
-	@BenchmarkMode(Mode.Throughput)
-	@Test
-	public void deleteAll(){
-		JMHJoinStudent s = new JMHJoinStudent();
-		StudentProvider sp = new StudentProvider();
-		 EntityManagerFactory factory = Persistence.createEntityManagerFactory("hb-database"); // session start
-         EntityManager em = factory.createEntityManager();
-         
-         		
-         for(int i=0;i<10000;i++) {
-        	 
-        	 s = em.find(JMHJoinStudent.class,1L);
-        	 em.remove(s);
-        	 em.getTransaction().commit();
-        	 
-         }
-         em.close(); // sesion end
-
-	}
+	
 }
