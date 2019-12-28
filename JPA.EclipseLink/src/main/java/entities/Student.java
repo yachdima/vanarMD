@@ -127,7 +127,7 @@ public class Student implements Property {
 
 
 
-
+/*
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
@@ -142,7 +142,7 @@ public class Student implements Property {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+*/
 
 
 	

@@ -1,7 +1,7 @@
 package entities;
 
 public interface Property {
-	String getName();
+/*	String getName();
 
-    Long getValue();
+    Long getValue();*/
 }

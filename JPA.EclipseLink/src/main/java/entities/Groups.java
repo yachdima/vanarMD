@@ -71,11 +71,11 @@ public class Groups implements Property {
 		return "Groups [id=" + id + ", name=" + name + ", faculty=" + faculty + ", students=" + students + "]";
 	}
 
-	@Override
+/*	@Override
 	public Long getValue() {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 	
 	
 
