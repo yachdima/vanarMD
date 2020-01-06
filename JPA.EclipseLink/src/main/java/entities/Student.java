@@ -1,5 +1,9 @@
 package entities;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -7,6 +11,7 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,13 +20,18 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PostLoad;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.sun.istack.NotNull;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "student")
+@EntityListeners( AgeUpdateListener.class )
 public class Student implements Property {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO) 	@Column(name = "id")
@@ -34,6 +44,9 @@ public class Student implements Property {
 	@NotNull
 	@Column(name = "dob")
     private Date dob;
+	
+	@Transient
+    private int age;
 	
 	@NotNull
 	@Column(name = "mark")
@@ -50,7 +63,41 @@ public class Student implements Property {
 		super();
 	}
     
+    private Date created;
+    private Date updated;
+  //  private Date deleted;
     
+
+    // timestamps
+	public Date getCreated() {
+		return created;
+	}
+
+
+	public void setCreated(Date created) {
+		this.created = created;
+	}
+
+
+	public Date getUpdated() {
+		return updated;
+	}
+
+
+	public void setUpdated(Date updated) {
+		this.updated = updated;
+	}
+	
+	
+
+	public int getAge() {
+		return age;
+	}
+
+
+	public void setAge(int l) {
+		this.age = l;
+	}
 
 
 	public Student(/*Long id,*/ String fullName, Date dob, Float mark, Performance per) {
@@ -104,14 +151,12 @@ public class Student implements Property {
 	}
 
 
-
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", fullName=" + fullName + ", dob=" + dob + ", mark=" + mark + ", groups=" + groups
-				+ "]";
+		return "Student [id=" + id + ", fullName=" + fullName + ", dob=" + dob + ", age=" + age + ", mark=" + mark
+				+ ", groups=" + groups + ", performance=" + performance + ", created=" + created + ", updated="
+				+ updated + "]";
 	}
-
-
 
 
 	public Performance getPerformance() {
@@ -126,30 +171,31 @@ public class Student implements Property {
 	}
 
 
-
-/*
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-
-	@Override
-	public Long getValue() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-*/
-
-
-	
-
 	
    // @GeneratedValue(strategy=GenerationType.AUTO)
     
+    // lifecycle events
+	@PreUpdate
+	public void setUpdatedTime() {
+		this.setUpdated(new Date());
+	}
+	
+	@PrePersist
+	public void setCreatedTime() {
+		this.setCreated(new Date());
+	}
+	
+	
+
     
-    
+}
+
+class AgeUpdateListener{
+	@PreUpdate
+	public void UpdateAge(Student s) {
+		s.setAge((int)ChronoUnit.YEARS.between( LocalDateTime.ofInstant(
+				Instant.ofEpochMilli( s.getDob().getTime()), ZoneOffset.UTC),
+			LocalDateTime.now())
+		);
+	}
 }

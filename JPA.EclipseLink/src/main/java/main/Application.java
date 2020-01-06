@@ -17,10 +17,11 @@ import entities.Student;
 
    public class Application {
        public static void main(String[] args) {
-          // check();
+         // check();
     	 //  uninstall();
          //  install();
-    	   testStudent();
+    	 //  testStudent();
+          testEvents();
 //           addOneStudent(new Student(567L, "fullname3"));
 //           Student s = findOneStudent(123L);
 //           System.out.println(s.toString());
@@ -65,6 +66,34 @@ import entities.Student;
     	   
     	   
     	   
+       }
+       
+       
+       public static void testEvents(){
+    	   Performance per = new Performance(5.5f,40,50,Performance.Behaviour.GOOD);
+    	   Student s = new Student("First student",new Date(80,11,1), 9.5f,per); // transient
+    	  // Student s;
+    	   
+    	   EntityManagerFactory factory = Persistence.createEntityManagerFactory("hb-database"); // session start
+           EntityManager em = factory.createEntityManager();
+           
+           em.getTransaction().begin();
+   			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+   			s = em.find(Student.class,2L);
+   			s.setFullName("Name is changed");
+           // C
+           em.persist(s);
+           
+           System.out.println(s);
+           
+           em.getTransaction().commit();
+           em.close(); // sesion end
+ 	   
        }
        
        public static void check() {
