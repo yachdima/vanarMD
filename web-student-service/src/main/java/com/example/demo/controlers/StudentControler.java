@@ -21,13 +21,14 @@ public class StudentControler {
 		list.add("Mary Cay");
 		list.add("Irina Tobin");
 		
-		// ?word=Jo
+		// http://localhost:8080/students?word=Jo
 		return list
 				.stream()
 				.filter(name -> word != null && word !="" ? name.contains(word):true)
 				.collect(Collectors.toList());
 	}
 	
+	// http://localhost:8080/students/create?name=Ivan
 	@PostMapping(value="/students/create")
 	public String createStudent(@RequestParam String name) {
 		String student_name = name;
